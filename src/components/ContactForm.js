@@ -39,8 +39,8 @@ export const ContactForm = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.elements.name.value;
-        const number = form.elements.number.value
-        dispatch(addContact({ name, number }))
+        const number = form.elements.number.value;
+        dispatch(addContact({ name, number }));
         form.reset();
     }
     return (
