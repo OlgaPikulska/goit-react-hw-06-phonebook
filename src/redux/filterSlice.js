@@ -10,13 +10,7 @@ const filterSlice = createSlice({
     reducers: {
         addWantedValue: {
             reducer(state, action) {
-
                 state.value = action.payload;
-            },
-            prepare(wantedValue) {
-                return {
-                    payload: wantedValue,
-                };
             },
         },
     },
