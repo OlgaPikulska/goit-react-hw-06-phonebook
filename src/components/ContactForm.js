@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { addContact } from "redux/contactsSlice";
+import { useDispatch } from "react-redux";
 
 const StyledForm = styled.form`
 border: 1px solid black;
@@ -31,8 +33,18 @@ cursor: pointer;
 `
 
 export const ContactForm = () => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.elements.name.value;
+        const number = form.elements.number.value
+        dispatch(addContact({ name, number }))
+        form.reset();
+    }
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit}>
             <StyledLabel>
                 Name
                 <StyledInput
