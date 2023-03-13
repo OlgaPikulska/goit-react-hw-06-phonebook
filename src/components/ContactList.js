@@ -1,16 +1,7 @@
-import { StyledButton } from './ContactForm';
-import styled from "styled-components";
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
+import { Contact } from './Contact';
 
-
-const StyledNumber = styled.span`
-margin-right: 5px;
-margin-left: 5px;
-`
-const StyledName = styled.span`
-font-weight:bold;
-`
 
 export const ContactList = () => {
     const contacts = useSelector(getContacts);
@@ -19,10 +10,7 @@ export const ContactList = () => {
         <ul>
             {contacts.map(contact => (
                 <li key={contact.id} >
-
-                    <StyledName>{contact.name}</StyledName>
-                    <StyledNumber>{contact.number}</StyledNumber>
-                    <StyledButton></StyledButton>
+                    <Contact contact={contact} />
                 </li>
             ))}
         </ul>
