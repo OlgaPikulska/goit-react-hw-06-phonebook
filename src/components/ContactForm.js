@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { addContact } from "redux/contactsSlice";
 import { useDispatch } from "react-redux";
 import { getContacts } from "redux/selectors";
+import { nanoid } from "@reduxjs/toolkit";
 
 const StyledForm = styled.form`
 border: 1px solid black;
@@ -53,6 +54,7 @@ export const ContactForm = () => {
         const form = e.target;
         const name = form.elements.name.value;
         const number = form.elements.number.value;
+        const id = nanoid()
         const isNameOnList = checkName(name);
         const isNumberOnList = checkNumber(number);
 
@@ -61,7 +63,7 @@ export const ContactForm = () => {
         } else if (isNumberOnList) {
             alert(`This number ${number} is already in contacts`)
         } else {
-            dispatch(addContact({ name, number }));
+            dispatch(addContact({ name, number, id }));
         }
         form.reset();
     }
